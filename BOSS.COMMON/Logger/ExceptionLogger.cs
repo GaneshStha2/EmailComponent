@@ -1,5 +1,4 @@
 ﻿
-using Elmah;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -12,25 +11,6 @@ namespace BOSS.COMMON.Logger
 {
     public static class ExceptionLogger
     {
-        public static void LogException(Exception ex, string contextualMessage = null)
-        {
-            try
-            {
-                if (contextualMessage != null)
-                {
-                    var annotatedException = new Exception(contextualMessage, ex);
-                    ErrorSignal.FromCurrentContext().Raise(annotatedException);
-                }
-                else
-                {
-                    ErrorSignal.FromCurrentContext().Raise(ex);
-                }
-            }
-            catch { }
-        }
-
-
-
         public static string MapPath(string path)
         {
             var Serverpath = Path.Combine(
